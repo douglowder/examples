@@ -6,10 +6,12 @@ import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { useTextStyles } from '@/hooks/useTextStyles';
+import { useScale } from '@/hooks/useScale';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
   const textStyles = useTextStyles();
+  const scale = useScale();
 
   const tabBarButton = (props: BottomTabBarButtonProps) => {
     const style: any = props.style ?? {};
@@ -31,8 +33,12 @@ export default function TabLayout() {
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         tabBarStyle: {
-          height: textStyles.title.lineHeight * 2,
+          height: textStyles.title.lineHeight * 2.5,
           marginBottom: 0,
+        },
+        tabBarIconStyle: {
+          height: textStyles.title.lineHeight,
+          width: 25 * scale,
         },
         headerShown: false,
       }}
@@ -72,10 +78,7 @@ export default function TabLayout() {
           tabBarButton,
           tabBarLabelStyle: textStyles.default,
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? 'code-slash' : 'code-slash-outline'}
-              color={color}
-            />
+            <TabBarIcon name={focused ? 'tv' : 'tv-outline'} color={color} />
           ),
         }}
       />
