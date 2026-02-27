@@ -89,14 +89,14 @@ export function CustomTabList(props: TabListProps) {
 
         {Platform.OS === 'web' ? (
           <ExternalLink href="https://docs.expo.dev" asChild>
-            <Pressable style={styles.externalPressable}>
-              <ThemedText type="link">Doc</ThemedText>
+            <TabButton isFocused={false}>
+              <ThemedText type="small">Doc</ThemedText>
               <SymbolView
                 tintColor={colors.text}
                 name={{ ios: 'arrow.up.right.square', web: 'link' }}
                 size={12}
               />
-            </Pressable>
+            </TabButton>
           </ExternalLink>
         ) : null}
       </ThemedView>
@@ -141,13 +141,6 @@ const useTabStyles = () => {
       borderRadius: spacing.three,
       borderWidth: 1,
       borderColor: theme.backgroundElement,
-    },
-    externalPressable: {
-      flexDirection: 'row',
-      justifyContent: 'center',
-      alignItems: 'center',
-      gap: spacing.one,
-      marginLeft: spacing.three,
     },
   });
 };
